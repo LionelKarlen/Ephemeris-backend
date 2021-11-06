@@ -1,11 +1,13 @@
-import express from "express"
-import { json } from "body-parser"
+import express from "express";
+import { json } from "body-parser";
+import { userRouter } from "./routes/user";
 
-const app = express()
-app.use(json())
+const app = express();
+app.use(json());
+app.use(userRouter);
 
-const PORT = process.env.port || 3000
+const PORT = process.env.port || 3000;
 
 app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}`)
-})
+	console.log(`Server started on port ${PORT}`);
+});
