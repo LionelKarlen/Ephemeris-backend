@@ -1,5 +1,5 @@
 {
-  "name": "ephemeris-common",
+  "name": "ephemeris-backend",
   "version": "1.0.0",
   "description": "Backend server for the Ephemeris project",
   "main": "index.js",

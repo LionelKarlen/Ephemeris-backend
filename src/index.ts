@@ -1,10 +1,11 @@
 import express from "express";
 import { json } from "body-parser";
 import { userRouter } from "./routes/user";
+import { routeHandler } from "./routes/handler";
 
 const app = express();
 app.use(json());
-app.use(userRouter);
+app.use('/api/', routeHandler);
 
 const PORT = process.env.port || 3000;
 
