@@ -284,7 +284,7 @@ encodeurl@~1.0.2:
 
 "ephemeris-common@https://github.com/LionelKarlen/Ephemeris-common":
   version "1.0.0"
-  resolved "https://github.com/LionelKarlen/Ephemeris-common#70c3004868c2476251578dd4e45bcea0dc4dc86f"
+  resolved "https://github.com/LionelKarlen/Ephemeris-common#0849922672227590110724c12841f23a77e37a2e"
 
 escape-html@~1.0.3:
   version "1.0.3"

@@ -1,11 +1,11 @@
 import express from "express";
 import { getCollection } from "../services/mongo";
-import type { User } from "ephemeris-common/lib/user";
 import { ObjectId } from "mongodb";
 import { handleRequestError } from '../services/util';
+import { Engagement } from "ephemeris-common/lib";
 
 const router = express.Router();
-const localCollection = "user"
+const localCollection = "engagement"
 
 router.get("/", (req, res) => {
 	const collection = getCollection(localCollection);
@@ -33,25 +33,29 @@ router.get("/:id", (req, res) => {
 router.put("/:id", (req, res) => {
 	const id = req.params.id;
 	const collection = getCollection(localCollection);
-	let user: User = {
-		name: req.body["name"],
-		email: req.body["email"],
-		password: req.body["password"],
-		deficit: 0,
+	let engagement: Engagement= {
+		date: req.body["date"],
+		engagement_type: req.body["engagement_type"],
+		unable: req.body["unable"],
+		user_id: req.body["user_id"],
+		visitor_number: req.body["visitor_number"],
+		visitor_type: req.body["visitor_type"]
 	};
-	collection.findOneAndUpdate({ _id: new ObjectId(id) }, user);
+	collection.findOneAndUpdate({ _id: new ObjectId(id) }, engagement);
 	res.send();
 });
 
 router.post("/", (req, res) => {
 	const collection = getCollection(localCollection);
-	let user: User = {
-		name: req.body["name"],
-		email: req.body["email"],
-		password: req.body["password"],
-		deficit: 0,
+	let engagement: Engagement= {
+		date: req.body["date"],
+		engagement_type: req.body["engagement_type"],
+		unable: req.body["unable"],
+		user_id: req.body["user_id"],
+		visitor_number: req.body["visitor_number"],
+		visitor_type: req.body["visitor_type"]
 	};
-	collection.insertOne(user);
+	collection.insertOne(engagement);
 	res.end();
 });
 
@@ -63,4 +67,4 @@ router.delete("/:id", (req, res) => {
 	res.end();
 });
 
-export { router as userRouter };
+export { router as engagementRouter };
