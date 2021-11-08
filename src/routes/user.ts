@@ -1,6 +1,6 @@
 import express from "express";
 import { getCollection } from "../services/mongo";
-import type { User } from "ephemeris-common/lib/user";
+import type { User } from "ephemeris-common/lib";
 import { ObjectId } from "mongodb";
 import { handleRequestError } from "../services/util";
 
@@ -44,6 +44,7 @@ router.put("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+	//TODO: add to **active** Archive cache maps
 	const collection = getCollection(localCollection);
 	let user: User = {
 		name: req.body["name"],
