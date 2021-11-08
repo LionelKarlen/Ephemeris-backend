@@ -4,5 +4,5 @@ const uri = "mongodb://localhost:27017";
 export const client = new MongoClient(uri);
 
 export const getCollection = (collection: string) => {
-	return client.db('ephemeris').collection(collection);
+	return client.db("ephemeris").collection(collection);
 };

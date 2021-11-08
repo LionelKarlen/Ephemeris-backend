@@ -2,10 +2,10 @@ import express from "express";
 import { getCollection } from "../services/mongo";
 import type { User } from "ephemeris-common/lib/user";
 import { ObjectId } from "mongodb";
-import { handleRequestError } from '../services/util';
+import { handleRequestError } from "../services/util";
 
 const router = express.Router();
-const localCollection = "user"
+const localCollection = "user";
 
 router.get("/", (req, res) => {
 	const collection = getCollection(localCollection);

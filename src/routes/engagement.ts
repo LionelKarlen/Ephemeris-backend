@@ -1,11 +1,11 @@
 import express from "express";
 import { getCollection } from "../services/mongo";
 import { ObjectId } from "mongodb";
-import { handleRequestError } from '../services/util';
+import { handleRequestError } from "../services/util";
 import { Engagement } from "ephemeris-common/lib";
 
 const router = express.Router();
-const localCollection = "engagement"
+const localCollection = "engagement";
 
 router.get("/", (req, res) => {
 	const collection = getCollection(localCollection);
@@ -33,13 +33,13 @@ router.get("/:id", (req, res) => {
 router.put("/:id", (req, res) => {
 	const id = req.params.id;
 	const collection = getCollection(localCollection);
-	let engagement: Engagement= {
+	let engagement: Engagement = {
 		date: req.body["date"],
 		engagement_type: req.body["engagement_type"],
 		unable: req.body["unable"],
 		user_id: req.body["user_id"],
 		visitor_number: req.body["visitor_number"],
-		visitor_type: req.body["visitor_type"]
+		visitor_type: req.body["visitor_type"],
 	};
 	collection.findOneAndUpdate({ _id: new ObjectId(id) }, engagement);
 	res.send();
@@ -47,13 +47,13 @@ router.put("/:id", (req, res) => {
 
 router.post("/", (req, res) => {
 	const collection = getCollection(localCollection);
-	let engagement: Engagement= {
+	let engagement: Engagement = {
 		date: req.body["date"],
 		engagement_type: req.body["engagement_type"],
 		unable: req.body["unable"],
 		user_id: req.body["user_id"],
 		visitor_number: req.body["visitor_number"],
-		visitor_type: req.body["visitor_type"]
+		visitor_type: req.body["visitor_type"],
 	};
 	collection.insertOne(engagement);
 	res.end();
